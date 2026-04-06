@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card, CardContent } from "./Card";
+import { Card } from "./Card";
 import { Image } from "@/components/atoms/Image";
 import { Typography } from "@/components/atoms/Typography";
 import { Badge } from "@/components/atoms/Badge";
@@ -10,13 +10,14 @@ interface MealCardProps {
   title: string;
   image: string;
   category?: string;
+  slug: string;
 }
 
-export function MealCard({ id, title, image, category }: MealCardProps) {
+export function MealCard({ id, title, image, category, slug }: MealCardProps) {
   const hashedId = encodeId(id);
 
   return (
-    <Link href={`/meal/${hashedId}`} className="block h-full">
+    <Link href={`/ingredients/${slug}/meal/${hashedId}`} className="block h-full">
       <Card className="h-full hover:-translate-y-1 group">
         <div className="relative aspect-square sm:aspect-[4/3] w-full overflow-hidden">
           <Image

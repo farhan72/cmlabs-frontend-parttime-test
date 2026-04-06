@@ -7,10 +7,10 @@ import { GridLayout } from "@/components/templates/GridLayout";
 import { MealDetailSection } from "@/components/organisms/MealDetailSection";
 import { VideoSection } from "@/components/organisms/VideoSection";
 import { Breadcrumb } from "@/components/molecules/Breadcrumb";
-import { slugify } from "@/lib/utils";
+import { unslugify } from "@/lib/utils";
 
 interface MealPageProps {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string; id: string }>;
 }
 
 export async function generateMetadata({ params }: MealPageProps): Promise<Metadata> {
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: MealPageProps): Promise<Metad
 }
 
 export default async function MealPage({ params }: MealPageProps) {
-  const { id: hashedId } = await params;
+  const { id: hashedId, slug } = await params;
   
   // Decode the secure hashed ID
   const realId = decodeId(hashedId);
@@ -44,8 +44,8 @@ export default async function MealPage({ params }: MealPageProps) {
     notFound();
   }
 
-  // Use the first ingredient as a fallback category for navigation
-  const mainIngredient = meal.strIngredient1;
+  // Use the slug for navigation breadcrumb
+  const mainIngredient = unslugify(slug);
 
   return (
     <MainLayout>
@@ -53,7 +53,7 @@ export default async function MealPage({ params }: MealPageProps) {
         breadcrumb={
           <Breadcrumb
             items={[
-              ...(mainIngredient ? [{ label: mainIngredient, href: `/ingredients/${slugify(mainIngredient)}` }] : []),
+              { label: mainIngredient, href: `/ingredients/${slug}` },
               { label: meal.strMeal },
             ]}
           />

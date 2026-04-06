@@ -65,7 +65,7 @@ export default async function IngredientMealsPage({ params, searchParams }: Ingr
           </div>
         }
       >
-        <MealGrid meals={meals} />
+        <MealGrid meals={meals} slug={slug} />
       </GridLayout>
     </MainLayout>
   );

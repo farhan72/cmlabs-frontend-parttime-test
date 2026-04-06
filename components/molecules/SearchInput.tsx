@@ -23,7 +23,7 @@ export function SearchInput({ placeholder = "Search for a meal...", className }:
     const timeoutId = setTimeout(() => {
       const currentQuery = searchParams.get("q") || "";
 
-      if (query !== currentQuery) {
+      if ((query !== currentQuery) && (query?.length > 2 || !query)) {
         const params = new URLSearchParams(searchParams.toString());
         if (query) {
           params.set("q", query.trim());
@@ -35,8 +35,7 @@ export function SearchInput({ placeholder = "Search for a meal...", className }:
           router.push(`${pathname}?${params.toString()}`);
         });
       }
-    }, 350); // Reduced from 1000ms for snappier results
-
+    }, 500);
     return () => clearTimeout(timeoutId);
   }, [query, searchParams, router, pathname]);
 

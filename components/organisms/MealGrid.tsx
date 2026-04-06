@@ -3,9 +3,10 @@ import { MealCard } from "@/components/molecules/MealCard";
 
 interface MealGridProps {
   meals: MealPreview[];
+  slug: string;
 }
 
-export function MealGrid({ meals }: MealGridProps) {
+export function MealGrid({ meals, slug }: MealGridProps) {
   if (meals.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center">
@@ -22,6 +23,7 @@ export function MealGrid({ meals }: MealGridProps) {
           id={meal.idMeal}
           title={meal.strMeal}
           image={meal.strMealThumb}
+          slug={slug}
         />
       ))}
     </div>

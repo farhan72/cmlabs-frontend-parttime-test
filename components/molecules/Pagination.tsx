@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, MoreHorizontal } from "lucide-react";
+import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PaginationProps {
@@ -35,15 +35,15 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
       <button
         onClick={() => onPageChange(1)}
         disabled={currentPage === 1}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-50 text-gray-700"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors enabled:hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 text-gray-700 cursor-pointer"
         aria-label="First page"
       >
-        <ChevronsLeft className="h-4 w-4" />
+        First
       </button>
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-50 text-gray-700"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors enabled:hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 text-gray-700 cursor-pointer"
         aria-label="Previous page"
       >
         <ChevronLeft className="h-4 w-4" />
@@ -74,7 +74,7 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-50 text-gray-700"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors enabled:hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 text-gray-700 cursor-pointer"
         aria-label="Next page"
       >
         <ChevronRight className="h-4 w-4" />
@@ -82,10 +82,10 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
       <button
         onClick={() => onPageChange(totalPages)}
         disabled={currentPage === totalPages}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-50 text-gray-700"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors enabled:hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 text-gray-700 cursor-pointer"
         aria-label="Last page"
       >
-        <ChevronsRight className="h-4 w-4" />
+        Last
       </button>
     </nav>
   );

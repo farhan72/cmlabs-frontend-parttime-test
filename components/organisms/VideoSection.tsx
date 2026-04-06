@@ -43,13 +43,22 @@ export function VideoSection({ youtubeUrl }: VideoSectionProps) {
       <Typography variant="h3">Video Tutorial</Typography>
       <div className="relative aspect-video w-full overflow-hidden rounded-2xl shadow-lg bg-black border border-border-soft">
         {isPlaying ? (
-          <iframe
-            className="absolute inset-0 h-full w-full"
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-            title="YouTube video tutorial"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          <div className="fixed inset-0 z-[100] flex flex-col justify-center bg-black/95 backdrop-blur-sm sm:absolute sm:inset-0 sm:z-auto sm:bg-transparent sm:backdrop-blur-none">
+            <button
+              onClick={() => setIsPlaying(false)}
+              className="absolute top-6 right-6 z-[101] flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white hover:bg-white/30 sm:hidden"
+              aria-label="Close video overlay"
+            >
+              ✕
+            </button>
+            <iframe
+              className="h-auto aspect-video w-full shadow-2xl sm:h-full sm:w-full sm:shadow-none"
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+              title="YouTube video tutorial"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
         ) : (
           <button
             onClick={() => setIsPlaying(true)}

@@ -99,7 +99,7 @@ export function IngredientSearchList({ ingredients }: IngredientSearchListProps)
               {query ? `Found ${filteredIngredients.length} ingredients matching "${query}"` : "Browse our extensive list of ingredients"}
             </Typography>
             {!query && (
-              <Badge variant="secondary" className="bg-accent/10 text-accent hover:bg-accent/20 border-none transition-colors">
+              <Badge variant="secondary" className="bg-accent/10 text-accent hover:bg-accent/20 border-none transition-colors whitespace-nowrap shrink-0">
                 {ingredients.length} total
               </Badge>
             )}

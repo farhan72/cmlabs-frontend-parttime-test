@@ -23,7 +23,7 @@ export function VideoSection({ youtubeUrl }: VideoSectionProps) {
   return (
     <div className="mt-16 flex flex-col gap-6">
       <Typography variant="h3">Video Tutorial</Typography>
-      <div className="relative aspect-video w-full overflow-hidden rounded-2xl shadow-lg bg-gray-900 border border-gray-200">
+      <div className="relative aspect-video w-full overflow-hidden rounded-2xl shadow-lg bg-black border border-border-soft">
         {isPlaying ? (
           <iframe
             className="absolute inset-0 h-full w-full"
@@ -44,7 +44,7 @@ export function VideoSection({ youtubeUrl }: VideoSectionProps) {
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/40" />
-            <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-red-600 shadow-2xl transition-transform duration-200 group-hover:scale-110">
+            <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-accent shadow-2xl transition-transform duration-200 group-hover:scale-110">
               <Play className="h-7 w-7 fill-white text-white translate-x-0.5 cursor-pointer" />
             </div>
           </button>

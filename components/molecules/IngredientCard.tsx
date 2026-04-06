@@ -14,8 +14,8 @@ export function IngredientCard({ name }: IngredientCardProps) {
 
   return (
     <Link href={`/ingredients/${slugify(name)}`} className="block h-full">
-      <Card className="h-full hover:border-indigo-100 hover:ring-2 hover:ring-indigo-50 hover:ring-offset-2">
-        <div className="bg-gradient-to-b from-gray-50 to-white p-6 flex justify-center items-center">
+      <Card className="h-full hover:border-accent hover:ring-2 hover:ring-accent/10 hover:ring-offset-2 group">
+        <div className="relative h-48 w-full bg-surface flex items-center justify-center p-6 overflow-hidden">
           <Image
             src={imageUrl}
             alt={name}
@@ -23,14 +23,15 @@ export function IngredientCard({ name }: IngredientCardProps) {
             height={120}
             sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16vw"
             className="object-contain drop-shadow-md group-hover:scale-110 transition-transform duration-300"
-            wrapperClassName="h-28 w-full flex justify-center items-center"
+            wrapperClassName="h-full w-full flex justify-center items-center"
           />
+          <div className="absolute inset-0 bg-[var(--color-overlay)] z-10 pointer-events-none group-hover:bg-black/50 transition-colors duration-300" />
+          <div className="absolute inset-0 z-20 flex flex-col justify-end p-4">
+             <Typography variant="h4" className="text-center text-lg lg:text-xl text-white group-hover:text-accent-hover transition-colors line-clamp-2 drop-shadow-md">
+              {name}
+            </Typography>
+          </div>
         </div>
-        <CardContent className="h-full flex items-center justify-center border-t border-gray-50 bg-white">
-          <Typography variant="h4" className="text-center text-lg lg:text-xl group-hover:text-indigo-600 transition-colors line-clamp-2">
-            {name}
-          </Typography>
-        </CardContent>
       </Card>
     </Link>
   );

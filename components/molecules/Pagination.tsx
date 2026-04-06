@@ -35,7 +35,7 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
       <button
         onClick={() => onPageChange(1)}
         disabled={currentPage === 1}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors enabled:hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 text-gray-700 cursor-pointer"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors enabled:hover:bg-border-soft disabled:cursor-not-allowed disabled:opacity-50 text-primary cursor-pointer"
         aria-label="First page"
       >
         First
@@ -43,7 +43,7 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors enabled:hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 text-gray-700 cursor-pointer"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors enabled:hover:bg-border-soft disabled:cursor-not-allowed disabled:opacity-50 text-primary cursor-pointer"
         aria-label="Previous page"
       >
         <ChevronLeft className="h-4 w-4" />
@@ -51,7 +51,7 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
 
       {getPageNumbers().map((page, i) =>
         page === -1 ? (
-          <span key={`ellipsis-${i}`} className="inline-flex h-10 w-10 items-center justify-center text-gray-500">
+          <span key={`ellipsis-${i}`} className="inline-flex h-10 w-10 items-center justify-center text-muted">
             <MoreHorizontal className="h-4 w-4" />
           </span>
         ) : (
@@ -61,8 +61,8 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
             className={cn(
               "inline-flex h-10 w-10 items-center justify-center cursor-pointer rounded-md text-sm font-medium transition-colors",
               currentPage === page
-                ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                : "text-gray-700 hover:bg-gray-100"
+                ? "bg-accent text-white hover:bg-accent-hover"
+                : "text-primary hover:bg-border-soft"
             )}
             aria-current={currentPage === page ? "page" : undefined}
           >
@@ -74,7 +74,7 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors enabled:hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 text-gray-700 cursor-pointer"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors enabled:hover:bg-border-soft disabled:cursor-not-allowed disabled:opacity-50 text-primary cursor-pointer"
         aria-label="Next page"
       >
         <ChevronRight className="h-4 w-4" />
@@ -82,7 +82,7 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
       <button
         onClick={() => onPageChange(totalPages)}
         disabled={currentPage === totalPages}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors enabled:hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 text-gray-700 cursor-pointer"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors enabled:hover:bg-border-soft disabled:cursor-not-allowed disabled:opacity-50 text-primary cursor-pointer"
         aria-label="Last page"
       >
         Last

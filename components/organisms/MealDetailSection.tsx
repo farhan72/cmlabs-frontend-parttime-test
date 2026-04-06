@@ -21,8 +21,8 @@ export function MealDetailSection({ meal }: MealDetailSectionProps) {
             alt={meal.strMeal}
             width={600}
             height={600}
-            className="rounded-2xl object-cover shadow-xl border border-gray-100"
-            wrapperClassName="aspect-square w-full rounded-2xl bg-gray-100"
+            className="rounded-2xl object-cover shadow-xl border border-border-soft"
+            wrapperClassName="aspect-square w-full rounded-2xl bg-background"
           />
         </div>
       </div>
@@ -34,7 +34,7 @@ export function MealDetailSection({ meal }: MealDetailSectionProps) {
             <Badge variant="default">{meal.strCategory}</Badge>
             <Badge variant="secondary">{meal.strArea}</Badge>
             {meal.strTags?.split(',').map(tag => tag.trim()).filter(Boolean).map(tag => (
-              <Badge key={tag} variant="outline" className="bg-white">{tag}</Badge>
+              <Badge key={tag} variant="outline" className="bg-surface">{tag}</Badge>
             ))}
           </div>
           <Typography variant="h1">{meal.strMeal}</Typography>
@@ -42,13 +42,13 @@ export function MealDetailSection({ meal }: MealDetailSectionProps) {
 
         <div className="grid gap-8 md:grid-cols-12 items-start">
           {/* Ingredients List */}
-          <div className="flex flex-col gap-5 md:col-span-5 bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+          <div className="flex flex-col gap-5 md:col-span-5 bg-surface p-6 rounded-2xl border border-border-soft shadow-[var(--shadow-soft)]">
             <Typography variant="h3">Ingredients</Typography>
-            <ul className="divide-y divide-gray-100 flex flex-col">
+            <ul className="divide-y divide-border-soft flex flex-col">
               {ingredientsAndMeasures.map((item, idx) => (
                 <li key={idx} className="flex justify-between py-3">
-                  <span className="font-medium text-gray-900">{item.ingredient}</span>
-                  <span className="text-gray-500 text-right ms-4">{item.measure}</span>
+                  <span className="font-medium text-primary">{item.ingredient}</span>
+                  <span className="text-muted text-right ms-4">{item.measure}</span>
                 </li>
               ))}
             </ul>
@@ -57,7 +57,7 @@ export function MealDetailSection({ meal }: MealDetailSectionProps) {
           {/* Instructions */}
           <div className="flex flex-col gap-5 md:col-span-7">
             <Typography variant="h3">Instructions</Typography>
-            <div className="prose prose-gray max-w-none text-gray-600 bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+            <div className="prose max-w-none text-secondary bg-surface p-6 rounded-2xl border border-border-soft shadow-[var(--shadow-soft)] space-y-4">
               {meal.strInstructions.split('\n').filter(p => p.trim()).map((paragraph, idx) => (
                 <p key={idx} className="leading-relaxed">{paragraph}</p>
               ))}

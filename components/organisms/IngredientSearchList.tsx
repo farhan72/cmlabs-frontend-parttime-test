@@ -89,17 +89,17 @@ export function IngredientSearchList({ ingredients }: IngredientSearchListProps)
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between bg-surface p-6 rounded-2xl shadow-sm border border-border-soft">
         <div className="flex flex-col gap-2">
-          <Typography variant="h3" className="text-gray-900">
+          <Typography variant="h3" className="text-primary">
             {query ? "Search Results" : "All Ingredients"}
           </Typography>
           <div className="flex items-center gap-2">
-            <Typography variant="p" className="text-gray-500 text-sm">
+            <Typography variant="p" className="text-secondary text-sm">
               {query ? `Found ${filteredIngredients.length} ingredients matching "${query}"` : "Browse our extensive list of ingredients"}
             </Typography>
             {!query && (
-              <Badge variant="secondary" className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border-none transition-colors">
+              <Badge variant="secondary" className="bg-accent/10 text-accent hover:bg-accent/20 border-none transition-colors">
                 {ingredients.length} total
               </Badge>
             )}
@@ -114,11 +114,11 @@ export function IngredientSearchList({ ingredients }: IngredientSearchListProps)
       <IngredientGrid ingredients={currentItems} />
 
       {filteredIngredients.length === 0 && (
-        <div className="py-20 text-center bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">
-          <Typography variant="h3" className="text-gray-400 mb-2">
+        <div className="py-20 text-center bg-background rounded-2xl border-2 border-dashed border-border-soft">
+          <Typography variant="h3" className="text-muted mb-2">
             No ingredients found
           </Typography>
-          <Typography variant="p" className="text-gray-500">
+          <Typography variant="p" className="text-secondary">
             Try searching for something else or browse all ingredients.
           </Typography>
         </div>
@@ -133,7 +133,7 @@ export function IngredientSearchList({ ingredients }: IngredientSearchListProps)
               onPageChange={handlePageChange}
             />
           ) : (
-            <div ref={observerTarget} className="h-10 w-full flex items-center justify-center text-gray-500">
+            <div ref={observerTarget} className="h-10 w-full flex items-center justify-center text-muted">
               {displayedCount < filteredIngredients.length ? (
                 <span className="animate-pulse">Loading more...</span>
               ) : (

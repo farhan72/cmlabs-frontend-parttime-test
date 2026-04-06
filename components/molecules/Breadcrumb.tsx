@@ -13,21 +13,21 @@ interface BreadcrumbProps {
 
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6 flex items-center space-x-2 text-sm text-gray-500 whitespace-nowrap overflow-x-auto pb-2 scrollbar-none">
-      <Link href="/ingredients" className="flex flex-row items-center hover:text-indigo-600 transition-colors shrink-0">
+    <nav aria-label="Breadcrumb" className="mb-6 flex items-center space-x-2 text-sm text-muted whitespace-nowrap overflow-x-auto pb-2 scrollbar-none">
+      <Link href="/ingredients" className="flex flex-row items-center hover:text-accent transition-colors shrink-0">
         <Home className="h-4 w-4" />
         <span className="sr-only">Home</span>
       </Link>
       
       {items.map((item, index) => (
         <div key={`${item.label}-${index}`} className="flex items-center space-x-2 shrink-0">
-          <ChevronRight className="h-4 w-4 text-gray-400" />
+          <ChevronRight className="h-4 w-4 text-muted" />
           {item.href ? (
-            <Link href={item.href} className="hover:text-indigo-600 transition-colors">
+            <Link href={item.href} className="hover:text-accent transition-colors">
               {item.label}
             </Link>
           ) : (
-            <Typography variant="span" className="font-medium text-gray-900 pointer-events-none">
+            <Typography variant="span" className="font-medium text-primary pointer-events-none">
               {item.label}
             </Typography>
           )}

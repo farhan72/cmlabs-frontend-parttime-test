@@ -9,7 +9,7 @@ export function MealGrid({ meals }: MealGridProps) {
   if (meals.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center">
-        <p className="text-gray-500">No meals found for this ingredient.</p>
+        <p className="text-muted">No meals found for this ingredient.</p>
       </div>
     );
   }

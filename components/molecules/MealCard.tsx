@@ -17,26 +17,30 @@ export function MealCard({ id, title, image, category }: MealCardProps) {
 
   return (
     <Link href={`/meal/${hashedId}`} className="block h-full">
-      <Card className="h-full hover:-translate-y-1">
-        <Image
-          src={image}
-          alt={title}
-          width={400}
-          height={300}
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
-          className="object-cover w-full h-full group-hover:scale-105 group-hover:opacity-90 transition-all duration-500"
-          wrapperClassName="aspect-square sm:aspect-[4/3] w-full bg-gray-100"
-        />
-        <CardContent className="flex flex-col gap-2">
-          {category && (
-            <Badge variant="secondary" className="w-fit shadow-none">
-              {category}
-            </Badge>
-          )}
-          <Typography variant="h4" className="line-clamp-2 text-lg lg:text-xl group-hover:text-indigo-600 transition-colors">
-            {title}
-          </Typography>
-        </CardContent>
+      <Card className="h-full hover:-translate-y-1 group">
+        <div className="relative aspect-square sm:aspect-[4/3] w-full overflow-hidden">
+          <Image
+            src={image || "https://user-images.githubusercontent.com/237508/90246627-ecbda400-de2c-11ea-8bfb-b4307bfb975d.png"}
+            fallbackSrc="https://user-images.githubusercontent.com/237508/90246627-ecbda400-de2c-11ea-8bfb-b4307bfb975d.png"
+            alt={title}
+            width={400}
+            height={300}
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
+            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+            wrapperClassName="w-full h-full bg-border-soft"
+          />
+          <div className="absolute inset-0 bg-[var(--color-overlay)] z-10 pointer-events-none group-hover:bg-black/50 transition-colors duration-300" />
+          <div className="absolute inset-0 z-20 flex flex-col justify-end p-5">
+            {category && (
+              <Badge variant="default" className="w-fit shadow-none mb-2 bg-accent text-white border-transparent">
+                {category}
+              </Badge>
+            )}
+            <Typography variant="h4" className="line-clamp-2 text-lg lg:text-xl text-white group-hover:text-accent-hover transition-colors drop-shadow-md">
+              {title}
+            </Typography>
+          </div>
+        </div>
       </Card>
     </Link>
   );

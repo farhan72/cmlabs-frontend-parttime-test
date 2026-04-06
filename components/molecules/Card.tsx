@@ -12,7 +12,7 @@ export function Card({ children, className, onClick }: CardProps) {
     <div
       onClick={onClick}
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:shadow-lg border border-gray-100",
+        "group relative flex flex-col overflow-hidden rounded-xl bg-surface transition-all duration-300 hover:shadow-[var(--shadow-soft)] border border-border-soft shadow-sm",
         onClick ? "cursor-pointer hover:-translate-y-1" : "",
         className
       )}

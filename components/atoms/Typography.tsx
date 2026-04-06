@@ -13,13 +13,13 @@ export function Typography({ variant = "p", children, className }: TypographyPro
   const Component = variant;
   
   const baseClasses = {
-    h1: "text-4xl font-extrabold tracking-tight lg:text-5xl text-gray-900",
-    h2: "text-3xl font-semibold tracking-tight text-gray-900",
-    h3: "text-2xl font-semibold tracking-tight text-gray-900",
-    h4: "text-xl font-semibold tracking-tight text-gray-900",
-    p: "leading-7 text-gray-600",
+    h1: "text-4xl font-extrabold tracking-tight lg:text-5xl text-primary",
+    h2: "text-3xl font-semibold tracking-tight text-primary",
+    h3: "text-2xl font-semibold tracking-tight text-primary",
+    h4: "text-xl font-semibold tracking-tight text-primary",
+    p: "leading-7 text-secondary",
     span: "",
-    small: "text-sm font-medium leading-none text-gray-500",
+    small: "text-sm font-medium leading-none text-muted",
   };
 
   return (

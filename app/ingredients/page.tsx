@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { getIngredients } from "@/lib/api";
 import { MainLayout } from "@/components/templates/MainLayout";
 import { GridLayout } from "@/components/templates/GridLayout";
@@ -23,7 +24,9 @@ export default async function IngredientsPage() {
           </Typography>
         }
       >
-        <IngredientSearchList ingredients={ingredients} />
+        <Suspense>
+          <IngredientSearchList ingredients={ingredients} />
+        </Suspense>
       </GridLayout>
     </MainLayout>
   );

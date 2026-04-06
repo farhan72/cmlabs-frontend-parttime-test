@@ -6,9 +6,10 @@ import { slugify } from "@/lib/utils";
 
 interface IngredientCardProps {
   name: string;
+  priority?: boolean;
 }
 
-export function IngredientCard({ name }: IngredientCardProps) {
+export function IngredientCard({ name, priority = false }: IngredientCardProps) {
   const imageUrl = `https://www.themealdb.com/images/ingredients/${encodeURIComponent(name)}.png`;
 
   return (
@@ -20,6 +21,7 @@ export function IngredientCard({ name }: IngredientCardProps) {
             alt={name}
             width={120}
             height={120}
+            priority={priority}
             sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16vw"
             className="object-contain drop-shadow-md group-hover:scale-110 transition-transform duration-300"
             wrapperClassName="h-full w-full flex justify-center items-center"

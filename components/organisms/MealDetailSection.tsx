@@ -51,8 +51,8 @@ function MealImageBanner({ src, alt }: { src: string; alt: string }) {
           alt={alt}
           width={600}
           height={600}
-          priority
-          className="rounded-2xl object-cover shadow-xl border border-border-soft"
+          preload
+          className="w-full rounded-2xl object-cover shadow-xl border border-border-soft"
           wrapperClassName="aspect-square w-full rounded-2xl bg-background"
         />
       </div>
@@ -82,7 +82,7 @@ function MealIngredientsList({ meal }: { meal: MealDetail }) {
 
   return (
     <div className="flex flex-col gap-5 md:col-span-5 bg-surface p-6 rounded-2xl border border-border-soft shadow-[var(--shadow-soft)]">
-      <Typography variant="h3">Ingredients</Typography>
+      <Typography variant="h3">Recipes</Typography>
       <ul className="divide-y divide-border-soft flex flex-col">
         {ingredientsAndMeasures.map((item, idx) => (
           <li key={idx} className="flex justify-between py-3">

@@ -50,7 +50,7 @@ export function SearchInput({ placeholder = "Search for a meal...", className }:
     <div 
       className={cn(
         "relative w-full transition-all duration-300 ease-in-out", 
-        (isFocused || query) ? "max-w-md! lg:max-w-lg! xl:max-w-xl!" : "max-w-md lg:max-w-md",
+        (isFocused || query) ? "lg:max-w-lg! xl:max-w-xl!" : "lg:max-w-md",
         className
       )}
     >

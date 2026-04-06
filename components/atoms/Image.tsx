@@ -1,7 +1,7 @@
 "use client";
 
 import NextImage, { ImageProps as NextImageProps } from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface ImageProps extends NextImageProps {
@@ -20,11 +20,13 @@ export function Image({
   ...props }: ImageProps) {
   const [imgSrc, setImgSrc] = useState(src);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentSrc, setCurrentSrc] = useState(src);
 
-  useEffect(() => {
+  if (src !== currentSrc) {
+    setCurrentSrc(src);
     setImgSrc(src);
     setIsLoading(true);
-  }, [src]);
+  }
 
   return (
     <div className={cn("relative overflow-hidden", isLoading && "animate-pulse bg-border-soft", wrapperClassName)}>

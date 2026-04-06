@@ -1,4 +1,4 @@
-import { MealPreview } from "@/lib/api";
+import type { MealPreview } from "@/interfaces";
 import { MealCard } from "@/components/molecules/MealCard";
 
 interface MealGridProps {

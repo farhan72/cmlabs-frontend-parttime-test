@@ -20,8 +20,7 @@ export function MealCard({ id, title, image, category }: MealCardProps) {
       <Card className="h-full hover:-translate-y-1 group">
         <div className="relative aspect-square sm:aspect-[4/3] w-full overflow-hidden">
           <Image
-            src={image || "https://user-images.githubusercontent.com/237508/90246627-ecbda400-de2c-11ea-8bfb-b4307bfb975d.png"}
-            fallbackSrc="https://user-images.githubusercontent.com/237508/90246627-ecbda400-de2c-11ea-8bfb-b4307bfb975d.png"
+            src={image}
             alt={title}
             width={400}
             height={300}

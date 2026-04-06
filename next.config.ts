@@ -10,16 +10,16 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "www.themealdb.com",
+        hostname: "t3.ftcdn.net",
         port: "",
         pathname: "/**",
       },
       {
         protocol: "https",
-        hostname: "user-images.githubusercontent.com",
+        hostname: "www.themealdb.com",
         port: "",
         pathname: "/**",
-      },
+      }
     ],
   },
 };

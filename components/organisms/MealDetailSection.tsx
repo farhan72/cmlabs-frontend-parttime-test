@@ -1,14 +1,20 @@
-import { MealDetail, extractIngredients } from "@/lib/api";
+import type { MealDetail } from "@/interfaces";
+import { extractIngredients } from "@/lib/api";
 import { Image } from "@/components/atoms/Image";
 import { Typography } from "@/components/atoms/Typography";
 import { Badge } from "@/components/atoms/Badge";
-import { Card, CardContent } from "@/components/molecules/Card";
 
 interface MealDetailSectionProps {
-  meal: MealDetail;
+  mealId: string;
 }
 
-export function MealDetailSection({ meal }: MealDetailSectionProps) {
+export async function MealDetailSection({ mealId }: MealDetailSectionProps) {
+  const res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+  const data = await res.json();
+  const meal: MealDetail = data.meals?.[0];
+
+  if (!meal) return null;
+
   const ingredientsAndMeasures = extractIngredients(meal);
 
   return (
@@ -21,6 +27,7 @@ export function MealDetailSection({ meal }: MealDetailSectionProps) {
             alt={meal.strMeal}
             width={600}
             height={600}
+            priority
             className="rounded-2xl object-cover shadow-xl border border-border-soft"
             wrapperClassName="aspect-square w-full rounded-2xl bg-background"
           />

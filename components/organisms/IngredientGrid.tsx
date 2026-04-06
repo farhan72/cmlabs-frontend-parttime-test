@@ -1,4 +1,4 @@
-import { Ingredient } from "@/lib/api";
+import type { Ingredient } from "@/interfaces";
 import { IngredientCard } from "@/components/molecules/IngredientCard";
 
 interface IngredientGridProps {

@@ -2,6 +2,8 @@
 
 A modern food discovery app built with **Next.js 16**, **Tailwind CSS v4**, and **Atomic Design** architecture. Browse ingredients and explore meals powered by the [TheMealDB](https://www.themealdb.com) API.
 
+**Live Demo:** [https://meal-app-alfiy.vercel.app/](https://meal-app-alfiy.vercel.app/)
+
 ---
 
 ## Getting Started
@@ -52,7 +54,7 @@ Runs the built app in production mode on [http://localhost:3000](http://localhos
 ## Project Structure
 
 ```
-food-app/
+cmlabs-frontend-parttime-test/
 ├── app/                      # Next.js App Router (pages & layouts)
 │   ├── globals.css           # Global styles & Tailwind theme tokens
 │   ├── layout.tsx            # Root layout
@@ -94,7 +96,7 @@ food-app/
 | `/` | Redirects to `/ingredients` |
 | `/ingredients` | Browse all ingredients with search & pagination |
 | `/ingredients/[slug]` | View meals that use a specific ingredient |
-| `/meal/[hashedId]` | Full meal detail with ingredients, instructions & video |
+| `/meal/[id]` | Full meal detail with ingredients, instructions & video |
 
 ---
 

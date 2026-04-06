@@ -16,7 +16,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
     <nav aria-label="Breadcrumb" className="mb-6 flex items-center space-x-2 text-sm text-muted whitespace-nowrap overflow-x-auto pb-2 scrollbar-none">
       <Link href="/ingredients" className="flex flex-row items-center hover:text-accent transition-colors shrink-0">
         <Home className="h-4 w-4" />
-        <span className="sr-only">Home</span>
+        <span className="ml-2">Home</span>
       </Link>
       
       {items.map((item, index) => (

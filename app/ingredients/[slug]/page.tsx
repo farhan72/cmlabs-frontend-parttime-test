@@ -45,7 +45,6 @@ export default async function IngredientMealsPage({ params, searchParams }: Ingr
         breadcrumb={
           <Breadcrumb
             items={[
-              { label: "Ingredients", href: "/ingredients" },
               { label: decodedIngredient },
             ]}
           />

@@ -1,33 +1,14 @@
 import { cache } from "react";
 
-export const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
+export type { Ingredient } from "@/interfaces/Ingredient";
+export type { MealPreview } from "@/interfaces/MealPreview";
+export type { MealDetail } from "@/interfaces/MealDetail";
 
-export interface Ingredient {
-  idIngredient: string;
-  strIngredient: string;
-  strDescription: string;
-  strType: string | null;
-}
+import type { Ingredient } from "@/interfaces/Ingredient";
+import type { MealPreview } from "@/interfaces/MealPreview";
+import type { MealDetail } from "@/interfaces/MealDetail";
 
-export interface MealPreview {
-  strMeal: string;
-  strMealThumb: string;
-  idMeal: string;
-}
-
-export interface MealDetail {
-  idMeal: string;
-  strMeal: string;
-  strDrinkAlternate: string | null;
-  strCategory: string;
-  strArea: string;
-  strInstructions: string;
-  strMealThumb: string;
-  strTags: string | null;
-  strYoutube: string;
-  // Ingredients and measures are dynamically keyed in the API, up to 20
-  [key: string]: string | null;
-}
+const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
 
 /**
  * Extracts ingredients and measures from the flattened MealDB response.

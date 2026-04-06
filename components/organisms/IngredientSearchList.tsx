@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Ingredient } from "@/lib/api";
+import type { Ingredient } from "@/interfaces";
 import { IngredientGrid } from "./IngredientGrid";
 import { SearchInput } from "@/components/molecules/SearchInput";
 import { Typography } from "@/components/atoms/Typography";

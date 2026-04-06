@@ -10,11 +10,11 @@ import { Breadcrumb } from "@/components/molecules/Breadcrumb";
 import { slugify } from "@/lib/utils";
 
 interface MealPageProps {
-  params: Promise<{ hashedId: string }>;
+  params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({ params }: MealPageProps): Promise<Metadata> {
-  const { hashedId } = await params;
+  const { id: hashedId } = await params;
   const realId = decodeId(hashedId);
 
   if (!realId) return { title: "Meal Not Found" };
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: MealPageProps): Promise<Metad
 }
 
 export default async function MealPage({ params }: MealPageProps) {
-  const { hashedId } = await params;
+  const { id: hashedId } = await params;
   
   // Decode the secure hashed ID
   const realId = decodeId(hashedId);
@@ -53,14 +53,13 @@ export default async function MealPage({ params }: MealPageProps) {
         breadcrumb={
           <Breadcrumb
             items={[
-              { label: "Ingredients", href: "/ingredients" },
               ...(mainIngredient ? [{ label: mainIngredient, href: `/ingredients/${slugify(mainIngredient)}` }] : []),
               { label: meal.strMeal },
             ]}
           />
         }
       >
-        <MealDetailSection meal={meal} />
+        <MealDetailSection mealId={realId} />
         {meal.strYoutube && <VideoSection youtubeUrl={meal.strYoutube} />}
       </GridLayout>
     </MainLayout>

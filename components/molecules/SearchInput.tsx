@@ -26,7 +26,7 @@ export function SearchInput({ placeholder = "Search for a meal...", className }:
       if (query !== currentQuery) {
         const params = new URLSearchParams(searchParams.toString());
         if (query) {
-          params.set("q", query);
+          params.set("q", query.trim());
         } else {
           params.delete("q");
         }

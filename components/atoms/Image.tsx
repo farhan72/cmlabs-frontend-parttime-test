@@ -9,20 +9,42 @@ interface ImageProps extends NextImageProps {
   fallbackSrc?: string;
 }
 
-export function Image({ wrapperClassName, className, alt, src, fallbackSrc = "/file.svg", ...props }: ImageProps) {
+export function Image({ 
+  wrapperClassName, 
+  className, 
+  alt, 
+  src, 
+  fallbackSrc = "https://t3.ftcdn.net/jpg/05/04/28/96/360_F_504289605_zehJiK0tCuZLP2MdfFBpcJdOVxKLnXg1.jpg", 
+  onLoad, 
+  onError, 
+  ...props }: ImageProps) {
   const [imgSrc, setImgSrc] = useState(src);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setImgSrc(src);
+    setIsLoading(true);
   }, [src]);
 
   return (
-    <div className={cn("relative overflow-hidden", wrapperClassName)}>
+    <div className={cn("relative overflow-hidden", isLoading && "animate-pulse bg-border-soft", wrapperClassName)}>
       <NextImage
         src={imgSrc || fallbackSrc}
-        className={cn("transition-opacity duration-300", className)}
+        className={cn(
+          "transition-all duration-500 ease-in-out",
+          isLoading ? "scale-95 opacity-0 blur-sm" : "scale-100 opacity-100 blur-0",
+          className
+        )}
         alt={alt}
-        onError={() => setImgSrc(fallbackSrc)}
+        onLoad={(e) => {
+          setIsLoading(false);
+          if (onLoad) onLoad(e);
+        }}
+        onError={(e) => {
+          setImgSrc(fallbackSrc);
+          setIsLoading(false);
+          if (onError) onError(e);
+        }}
         {...props}
       />
     </div>

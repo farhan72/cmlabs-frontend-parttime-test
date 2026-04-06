@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MealApp
+
+A modern food discovery app built with **Next.js 16**, **Tailwind CSS v4**, and **Atomic Design** architecture. Browse ingredients and explore meals powered by the [TheMealDB](https://www.themealdb.com) API.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) **v18+**
+- [npm](https://www.npmjs.com/) **v9+** (comes with Node.js)
+
+### Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone git@github.com:farhan72/cmlabs-frontend-parttime-test.git
+cd cmlabs-frontend-parttime-test
+npm install
+```
+
+### Running the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser. The app auto-reloads when you edit files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+This compiles an optimized production build and generates a **compression report** (Gzip & Brotli savings).
 
-To learn more about Next.js, take a look at the following resources:
+### Starting the Production Server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Runs the built app in production mode on [http://localhost:3000](http://localhost:3000).
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+food-app/
+├── app/                      # Next.js App Router (pages & layouts)
+│   ├── globals.css           # Global styles & Tailwind theme tokens
+│   ├── layout.tsx            # Root layout
+│   ├── page.tsx              # Home page
+│   ├── ingredients/          # Ingredients listing & detail pages
+│   └── meal/                 # Meal detail page
+├── components/               # Atomic Design components
+│   ├── atoms/                # Button, Typography, Badge, Image, Skeleton
+│   ├── molecules/            # Card, MealCard, IngredientCard, SearchInput, Pagination
+│   ├── organisms/            # Navbar, MealGrid, IngredientGrid, VideoSection, MealDetailSection
+│   └── templates/            # MainLayout, GridLayout
+├── lib/                      # Utilities & API helpers
+│   ├── api.ts                # TheMealDB API functions
+│   ├── hash.ts               # ID encoding/decoding
+│   └── utils.ts              # cn() helper, slugify, etc.
+├── public/                   # Static assets
+└── scripts/                  # Post-build reporting script
+```
+
+---
+
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| [Next.js 16](https://nextjs.org) | App Router, SSR/SSG, Image optimization |
+| [React 19](https://react.dev) | UI framework |
+| [Tailwind CSS v4](https://tailwindcss.com) | Utility-first styling with semantic tokens |
+| [TypeScript](https://typescriptlang.org) | Type safety |
+| [Lucide React](https://lucide.dev) | Icon library |
+| [TheMealDB API](https://www.themealdb.com/api.php) | Meal & ingredient data |
+
+---
+
+## Pages
+
+| Route | Description |
+|---|---|
+| `/` | Redirects to `/ingredients` |
+| `/ingredients` | Browse all ingredients with search & pagination |
+| `/ingredients/[slug]` | View meals that use a specific ingredient |
+| `/meal/[hashedId]` | Full meal detail with ingredients, instructions & video |
+
+---
+
+## Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm run build` | Build for production + show compression report |
+| `npm start` | Run the production build locally |
+| `npm run lint` | Run ESLint checks |
+
+---
+
+## Environment Variables
+
+No API keys are required. TheMealDB free tier is used via public endpoints.
+
+---

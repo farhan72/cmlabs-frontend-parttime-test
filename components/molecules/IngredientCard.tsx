@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card, CardContent } from "./Card";
+import { Card } from "./Card";
 import { Image } from "@/components/atoms/Image";
 import { Typography } from "@/components/atoms/Typography";
 import { slugify } from "@/lib/utils";
@@ -9,7 +9,6 @@ interface IngredientCardProps {
 }
 
 export function IngredientCard({ name }: IngredientCardProps) {
-  // TheMealDB provides images based on ingredient name.
   const imageUrl = `https://www.themealdb.com/images/ingredients/${encodeURIComponent(name)}.png`;
 
   return (

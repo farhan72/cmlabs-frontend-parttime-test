@@ -15,6 +15,7 @@ export function SearchInput({ placeholder = "Search for a meal...", className }:
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
+  const [isFocused, setIsFocused] = useState(false);
 
   const [query, setQuery] = useState(searchParams.get("q") || "");
 
@@ -39,21 +40,28 @@ export function SearchInput({ placeholder = "Search for a meal...", className }:
     return () => clearTimeout(timeoutId);
   }, [query, searchParams, router, pathname]);
 
-  // Sync internal state with URL changes (e.g., back/forward navigation)
   useEffect(() => {
     const urlQuery = searchParams.get("q") || "";
     if (urlQuery !== query) {
       setQuery(urlQuery);
     }
-  }, [searchParams]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   return (
-    <div className={cn("relative w-full max-w-md", className)}>
+    <div 
+      className={cn(
+        "relative w-full transition-all duration-300 ease-in-out", 
+        (isFocused || query) ? "max-w-md! lg:max-w-lg! xl:max-w-xl!" : "max-w-md lg:max-w-md",
+        className
+      )}
+    >
       <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
       <input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         placeholder={placeholder}
         className="h-10 w-full rounded-xl border border-border-soft bg-white pl-10 pr-10 text-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/10 transition-all shadow-sm text-primary placeholder:text-muted"
       />

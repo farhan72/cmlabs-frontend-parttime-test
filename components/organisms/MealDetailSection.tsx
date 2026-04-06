@@ -104,11 +104,11 @@ function MealInstructionsList({ rawInstructions }: { rawInstructions: string }) 
       <div className="bg-surface p-6 sm:p-8 rounded-2xl border border-border-soft shadow-[var(--shadow-soft)]">
         <ul className="space-y-6">
           {steps.map((step, idx) => (
-            <li key={idx} className="flex gap-4 relative">
-              <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-sm mt-0.5 shadow-sm">
+            <li key={idx} className="flex gap-4 relative items-start">
+              <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-sm shadow-sm">
                 {idx + 1}
               </span>
-              <p className="text-secondary leading-relaxed text-[15px] flex-1">
+              <p className="text-secondary leading-relaxed text-[15px] flex-1 pt-1">
                 {step}
               </p>
             </li>

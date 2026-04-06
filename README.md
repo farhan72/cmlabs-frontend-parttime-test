@@ -57,14 +57,17 @@ Runs the built app in production mode on [http://localhost:3000](http://localhos
 cmlabs-frontend-parttime-test/
 ├── app/                      # Next.js App Router (pages & layouts)
 │   ├── globals.css           # Global styles & Tailwind theme tokens
+│   ├── error.tsx             # Global error boundary
 │   ├── layout.tsx            # Root layout
 │   ├── page.tsx              # Home page
-│   ├── ingredients/          # Ingredients listing & detail pages
-│   └── meal/                 # Meal detail page
+│   └── ingredients/          # Ingredients directory
+│       ├── [slug]/           # Ingredient detail page & nested routes
+│       │   └── meal/[id]/    # Meal detail page
+│       └── page.tsx          # Ingredients listing page
 ├── components/               # Atomic Design components
 │   ├── atoms/                # Button, Typography, Badge, Image, Skeleton
-│   ├── molecules/            # Card, MealCard, IngredientCard, SearchInput, Pagination
-│   ├── organisms/            # Navbar, MealGrid, IngredientGrid, VideoSection, MealDetailSection
+│   ├── molecules/            # Breadcrumb, Card, MealCard, IngredientCard, SearchInput, Pagination
+│   ├── organisms/            # Navbar, MealGrid, IngredientGrid, IngredientSearchList, VideoSection, MealDetailSection
 │   └── templates/            # MainLayout, GridLayout
 ├── lib/                      # Utilities & API helpers
 │   ├── api.ts                # TheMealDB API functions
@@ -96,7 +99,7 @@ cmlabs-frontend-parttime-test/
 | `/` | Redirects to `/ingredients` |
 | `/ingredients` | Browse all ingredients with search & pagination |
 | `/ingredients/[slug]` | View meals that use a specific ingredient |
-| `/meal/[id]` | Full meal detail with ingredients, instructions & video |
+| `/ingredients/[slug]/meal/[id]` | Full meal detail within context of selected ingredient |
 
 ---
 
